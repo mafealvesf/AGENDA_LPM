@@ -21,7 +21,7 @@ public class Agenda {
 
     public void adicionarCompromisso(Compromisso compromisso) {
         if (compromissos.size() >= MAX_COMPROMISSOS) {
-            System.out.println("❌ Limite máximo de compromissos atingido!");
+            System.out.println("Limite máximo de compromissos atingido!");
             return;
         }
         compromissos.add(compromisso);
@@ -45,9 +45,10 @@ public class Agenda {
             System.out.println("📭 Nenhum compromisso registrado.");
             return;
         }
-
+    
         StringBuilder relatorio = new StringBuilder("\n--- RELATÓRIO DE COMPROMISSOS ---\n");
-
+    
+        // Adicionando todos os compromissos
         for (Compromisso c : compromissos) {
             relatorio.append("ID: ").append(c.getId()).append("\n")
                      .append("Descrição: ").append(c.getDescricao()).append("\n")
@@ -55,13 +56,16 @@ public class Agenda {
                      .append("Tipo: ").append(c.getTipo()).append("\n")
                      .append("-------------------------------------\n");
         }
-
+    
+        //  Adicionando contagem de compromissos por dia
         relatorio.append("\n--- TOTAL DE COMPROMISSOS POR DIA ---\n");
         for (Map.Entry<LocalDate, Integer> entry : quantCompromissos.entrySet()) {
             relatorio.append("Data: ").append(entry.getKey().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                      .append(" - ").append(entry.getValue()).append(" compromisso(s)\n");
         }
     
+        // Imprimindo o relatório completo
+        System.out.println(relatorio.toString());
     }
-
+    
 }

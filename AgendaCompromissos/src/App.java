@@ -37,6 +37,7 @@ public class App {
                     Compromisso compromisso = new Compromisso(descricao, momento, tipo);
                     agenda.adicionarCompromisso(compromisso);
                     System.out.println("Compromisso adicionado com sucesso!");
+
                 } catch (IllegalArgumentException e) {
                     System.out.println("Erro: " + e.getMessage());
                 }
